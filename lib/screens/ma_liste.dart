@@ -68,6 +68,7 @@ class _MalisteState extends State<Maliste> {
       width: MediaQuery.of(context).size.width,
       child: Swiper(
         viewportFraction: 0.75,
+
         scale: 0.9,
         itemWidth: 350,
         itemHeight: 400,
