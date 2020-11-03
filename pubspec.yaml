@@ -39,7 +39,7 @@ dev_dependencies:
   google_fonts: ^1.1.1
   page_transition: "^1.1.7+2"
   flutter_swiper: ^1.1.6
-
+  animated_icon_button: ^0.3.0
 
 
 

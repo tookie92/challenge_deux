@@ -14,7 +14,7 @@ final currentUser = UserModel(
           description:
           'Lorem ipsum dolor',
           imgPath: 'assets/images/rouge.png',
-        
+          like: true
       ),
       ShoeModel(
           nom: "Air second",
@@ -22,7 +22,7 @@ final currentUser = UserModel(
           description:
           'Lorem ipsum dolor sit amet consectetur',
           imgPath: 'assets/images/rouge.png',
-
+          like: true
       ),
       ShoeModel(
           nom: "Papa Ikos",
@@ -30,6 +30,7 @@ final currentUser = UserModel(
           description:
           'Lorem ipsum dolor ',
           imgPath: 'assets/images/shoe_tilt_2.png',
+          like: true
 
       ),
       ShoeModel(
@@ -38,6 +39,7 @@ final currentUser = UserModel(
           description:
           'Lorem ipsum dolor',
           imgPath: 'assets/images/rouge.png',
+          like: true
 
       ),
       ShoeModel(
@@ -46,6 +48,7 @@ final currentUser = UserModel(
           description:
           'Lorem ipsum dolor',
           imgPath: 'assets/images/blue.png',
+          like: true
       ),
     ]
 

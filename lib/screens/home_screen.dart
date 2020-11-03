@@ -7,6 +7,7 @@ import 'package:page_transition/page_transition.dart';
 
 
 
+
 class HomeScreen extends StatefulWidget {
   @override
   _HomeScreenState createState() => _HomeScreenState();
@@ -49,6 +50,9 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Stack(
           children: [
             AnimatedPositioned(
+              onEnd: (){
+
+              },
               curve: Curves.bounceInOut,
               duration: _duration,
               bottom: _isLit? MediaQuery.of(context).size.height * 0.5: MediaQuery.of(context).size.height * 0.3,

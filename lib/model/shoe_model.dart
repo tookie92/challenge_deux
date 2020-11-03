@@ -7,11 +7,11 @@ class ShoeModel{
   final double prix;
   final String description;
   final String imgPath;
-  final List<CategorieModel> categorie;
+  final bool like;
 
 
 
- ShoeModel({this.id, this.nom, this.prix, this.description, this.imgPath, this.categorie});
+ ShoeModel({this.id, this.nom, this.prix, this.description, this.imgPath, this.like});
 
 
 }

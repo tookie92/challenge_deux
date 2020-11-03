@@ -7,6 +7,8 @@ import 'package:challenge_deux/model/shoe_model.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
+import 'package:animated_icon_button/animated_icon_button.dart';
+
 
 
 
@@ -98,6 +100,27 @@ class _MalisteState extends State<Maliste> {
                       )
                   ),
 
+                  Positioned(
+                    top:5,
+                      right: 6,
+                      child: AnimatedIconButton(
+                        size: 20,
+                        onPressed: () {
+                          setState(() {
+
+                          });
+                        },
+                        duration: Duration(milliseconds: 200),
+                        endIcon: Icon(
+                          Icons.favorite,
+                          color: Colors.red,
+                        ),
+                        startIcon: Icon(
+                          Icons.favorite,
+                          color: Colors.grey,
+                        ),
+                      )
+                  ),
 
 
 
