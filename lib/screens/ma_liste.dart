@@ -2,7 +2,6 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:challenge_deux/model/data.dart';
-import 'package:challenge_deux/model/user_model.dart';
 import 'package:challenge_deux/model/shoe_model.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:page_transition/page_transition.dart';
@@ -32,14 +31,14 @@ class _MalisteState extends State<Maliste> {
           padding: const EdgeInsets.only( top: 20.0, left: 20.0),
           child: RichText(
              text: TextSpan(
-               text: 'Recents Order',
+               text: 'Recents Order ',
                style: GoogleFonts.montserrat(
                  fontSize: 20.0,
 
                ),
                children: <TextSpan>[
                  TextSpan(
-                     text: ' of ${currentUser.nom}',
+                     text: 'of this month',
                    style: GoogleFonts.montserrat(
                      fontSize: 15.0,
                      fontWeight: FontWeight.w200,
@@ -59,6 +58,36 @@ class _MalisteState extends State<Maliste> {
             ),
           ],
         ),
+        Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Container(
+                height: 150.0,
+                width: MediaQuery.of(context).size.width,
+                decoration: BoxDecoration(
+                    color: Colors.grey.withOpacity(0.2),
+                    borderRadius: BorderRadius.circular(20.0)
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.only(top:15.0, left: 15.0, bottom: 10.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('Your informations',
+                        style: GoogleFonts.montserrat(
+                          color: Colors.white,
+                          fontSize: 20.0,
+                          fontWeight: FontWeight.w600
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ],
+        )
       ],
     );
   }
@@ -73,7 +102,7 @@ class _MalisteState extends State<Maliste> {
         itemWidth: 350,
         itemHeight: 400,
         itemCount: currentUser.shoes.length,
-        itemBuilder: (BuildContext, int index){
+        itemBuilder: (buildContext, int index){
           ShoeModel shoeModel = currentUser.shoes[index];
           return Padding(
             padding: const EdgeInsets.all(20.0),
@@ -84,7 +113,7 @@ class _MalisteState extends State<Maliste> {
                   Container(
                     width: 300,
                     decoration: BoxDecoration(
-                        color: Colors.grey.withOpacity(0.4),
+                        color: Colors.grey.withOpacity(0.2),
                         borderRadius: BorderRadius.circular(20.0)
                     ),
                   ),
@@ -173,6 +202,38 @@ class _MalisteState extends State<Maliste> {
   }
 }
 
+
+
+class RPSCustomPainter extends CustomClipper<Path>{
+
+  @override
+  Path getClip(Size size) {
+
+
+
+    Path path = new Path();
+    path.moveTo(size.width*0.17,size.height*0.10);
+    path.lineTo(size.width*0.83,size.height*0.10);
+    path.lineTo(size.width*0.83,size.height*0.42);
+    path.quadraticBezierTo(size.width*0.76,size.height*0.46,size.width*0.83,size.height*0.48);
+    path.quadraticBezierTo(size.width*0.83,size.height*0.56,size.width*0.83,size.height*0.80);
+    path.lineTo(size.width*0.17,size.height*0.80);
+    path.quadraticBezierTo(size.width*0.17,size.height*0.56,size.width*0.17,size.height*0.48);
+    path.quadraticBezierTo(size.width*0.22,size.height*0.45,size.width*0.17,size.height*0.42);
+    path.lineTo(size.width*0.17,size.height*0.10);
+    path.close();
+
+    return path;
+
+
+  }
+
+  @override
+  bool shouldReclip(CustomClipper oldDelegate) {
+    return false;
+  }
+
+}
 
 
 
