@@ -1,10 +1,9 @@
-import 'dart:math';
 
+import 'package:challenge_deux/screens/detail_page.dart';
 import 'package:flutter/material.dart';
 import 'package:challenge_deux/model/data.dart';
 import 'package:challenge_deux/model/shoe_model.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:page_transition/page_transition.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:animated_icon_button/animated_icon_button.dart';
 
@@ -70,17 +69,66 @@ class _MalisteState extends State<Maliste> {
                     borderRadius: BorderRadius.circular(20.0)
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.only(top:15.0, left: 15.0, bottom: 10.0),
+                  padding: const EdgeInsets.only(top:15.0, left: 10.0, bottom: 10.0,),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('Your informations',
-                        style: GoogleFonts.montserrat(
-                          color: Colors.white,
-                          fontSize: 20.0,
-                          fontWeight: FontWeight.w600
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 10.0),
+                        child: Text(
+                          'Your informations',
+                          style: GoogleFonts.montserrat(
+                              color: Colors.white,
+                              fontSize: 20.0,
+                              fontWeight: FontWeight.w600
+                          ),
                         ),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Container(
+                            height:80,
+                            width: 60,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: Colors.black
+                            ),
+                            child: Align(
+                              alignment: Alignment.center,
+                              child: Icon(Icons.map,
+                              size: 35.0,
+                              color: Colors.white,
+                              ),
+                            ),
+                          ),
+                          SizedBox(width: 10.0,),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Your delivery address',
+                                  style: GoogleFonts.montserrat(
+                                    color: Colors.white,
+                                  ),
+                                ),
+                                SizedBox(height: 10.0,),
+                                Text(
+                                  '${currentUser.adresse}',
+                                  style: GoogleFonts.montserrat(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w800,
+                                    fontSize: 15.0
+                                  ),
+                                  overflow: TextOverflow.ellipsis,
+                                )
+                              ],
+                            ),
+                          )
+                        ],
                       )
+
                     ],
                   ),
                 ),
@@ -110,13 +158,14 @@ class _MalisteState extends State<Maliste> {
 
               child: Stack(
                 children: [
-                  Container(
-                    width: 300,
-                    decoration: BoxDecoration(
-                        color: Colors.grey.withOpacity(0.2),
-                        borderRadius: BorderRadius.circular(20.0)
+                    Container(
+                      width: 300,
+                      decoration: BoxDecoration(
+                          color: Colors.grey.withOpacity(0.2),
+                          borderRadius: BorderRadius.circular(20.0)
+                      ),
                     ),
-                  ),
+
                   Positioned(
                       bottom: 90.0,
                       left: 20.0,
@@ -158,16 +207,16 @@ class _MalisteState extends State<Maliste> {
                   Positioned(
                       top: 50.0,
                       left: 35.0,
-                      child: Container(
-                        width: 180,
-                        decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: Colors.black
-                        ),
-                        child: Transform.rotate(
-                          angle: pi/60.0,
+                      child: Hero(
+                        tag: "hero${shoeModel.imgPath}",
+                        child: Container(
+                          width: 180,
+                          decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: Colors.black
+                          ),
                           child: Image(
-                            image: AssetImage('${shoeModel.imgPath}'),
+                            image: AssetImage('assets/images/${shoeModel.imgPath}'),
                             fit: BoxFit.cover,
                             height: 150,
                             width: 150,
@@ -179,7 +228,7 @@ class _MalisteState extends State<Maliste> {
 
 
                   Positioned(
-                      bottom: 30.0,
+                      bottom: 65.0,
                       left: 20.0,
                       child: Text(
                         '\$ ${shoeModel.prix.toString()}',
@@ -188,6 +237,19 @@ class _MalisteState extends State<Maliste> {
                             fontWeight: FontWeight.w300,
                             fontSize: 15.0
                         ),
+                      )
+                  ),
+
+                  Positioned(
+                      bottom: 10.0,
+                      right: 9.0,
+                      child: IconButton(
+                        icon: Icon(Icons.arrow_forward),
+                        iconSize: 20.0,
+                        color: Colors.white,
+                        onPressed: (){
+                            Navigator.of(context).push(MaterialPageRoute(builder: (_) => DetailPage(shoeModel)));
+                        },
                       )
                   )
                 ],
@@ -211,17 +273,18 @@ class RPSCustomPainter extends CustomClipper<Path>{
 
 
 
-    Path path = new Path();
-    path.moveTo(size.width*0.17,size.height*0.10);
-    path.lineTo(size.width*0.83,size.height*0.10);
-    path.lineTo(size.width*0.83,size.height*0.42);
-    path.quadraticBezierTo(size.width*0.76,size.height*0.46,size.width*0.83,size.height*0.48);
-    path.quadraticBezierTo(size.width*0.83,size.height*0.56,size.width*0.83,size.height*0.80);
-    path.lineTo(size.width*0.17,size.height*0.80);
-    path.quadraticBezierTo(size.width*0.17,size.height*0.56,size.width*0.17,size.height*0.48);
-    path.quadraticBezierTo(size.width*0.22,size.height*0.45,size.width*0.17,size.height*0.42);
-    path.lineTo(size.width*0.17,size.height*0.10);
+    Path path = Path();
+    path.moveTo(size.width*0.29,size.height*0.07);
+    path.quadraticBezierTo(size.width*0.29,size.height*0.34,size.width*0.29,size.height*0.43);
+    path.quadraticBezierTo(size.width*0.33,size.height*0.45,size.width*0.29,size.height*0.50);
+    path.lineTo(size.width*0.29,size.height*0.93);
+    path.lineTo(size.width*0.63,size.height*0.93);
+    path.lineTo(size.width*0.63,size.height*0.50);
+    path.quadraticBezierTo(size.width*0.58,size.height*0.46,size.width*0.63,size.height*0.43);
+    path.quadraticBezierTo(size.width*0.63,size.height*0.34,size.width*0.63,size.height*0.07);
+    path.lineTo(size.width*0.29,size.height*0.07);
     path.close();
+
 
     return path;
 

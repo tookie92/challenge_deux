@@ -1,9 +1,7 @@
-import 'dart:math';
 
 import 'package:challenge_deux/screens/shop_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:page_transition/page_transition.dart';
 
 
 
@@ -24,6 +22,12 @@ class _HomeScreenState extends State<HomeScreen> {
     Future.delayed(Duration(milliseconds: 1000),(){
       setState(() {
         _isLit = true;
+      });
+    });
+
+    Future.delayed(Duration(milliseconds: 5000),(){
+      setState(() {
+       Navigator.of(context).push(MaterialPageRoute(builder: (_) => ShopScreen()));
       });
     });
   }
@@ -72,21 +76,18 @@ class _HomeScreenState extends State<HomeScreen> {
 
            AnimatedPositioned(
              curve: Curves.easeInBack,
-             duration: Duration(milliseconds: 900),
+             duration: Duration(milliseconds: 1000),
               top:180.0,
               left: 10.0,
               child: AnimatedOpacity(
                 duration: Duration(milliseconds: 900),
                 curve: Curves.easeInOut,
                 opacity: _isLit? 1.0 : 0.0,
-                child: Transform.rotate(
-                  angle:_isLit? pi/5: pi/2,
-                  child: Image(
-                    image: AssetImage('assets/images/shoees.png'),
-                    height: 400.0,
-                    width: 400.0,
-                    fit: BoxFit.cover,
-                  ),
+                child: Image(
+                  image: AssetImage('assets/images/shoees.png'),
+                  height: 400.0,
+                  width: 400.0,
+                  fit: BoxFit.cover,
                 ),
               )
             ),
@@ -97,7 +98,7 @@ class _HomeScreenState extends State<HomeScreen> {
               bottom: MediaQuery.of(context).size.height * 0.39,
               right: MediaQuery.of(context).size.width * 0.1,
               child: AnimatedOpacity(
-                duration: Duration(milliseconds: 1500),
+                duration: Duration(milliseconds: 1000),
                 opacity: _isLit ? 1.0 : 0.0,
                 child: Text(
                   'Just do it',
@@ -112,35 +113,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
 
-            Positioned(
-              bottom: MediaQuery.of(context).size.height * 0.10,
-              right: MediaQuery.of(context).size.width * 0.30,
-              child: FlatButton(
-                height: 50.0,
-                minWidth: 150.0,
-                shape: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(30.0)
-                ),
-                color: Color(0xffeaff4f),
-                child: Row(
-                  children: [
-                    Icon(Icons.arrow_forward_ios),
-                    SizedBox(width: 10.0),
-                    Text(
-                      'Enter',
-                      style: GoogleFonts.montserrat(
-                        color: Color(0xff373646),
-                        fontWeight: FontWeight.w500,
-                        fontSize: 17.0
-                      ),
-                    ),
-                  ],
-                ),
 
-                onPressed: ()=> Navigator.push(context, PageTransition(type: PageTransitionType.scale,duration: Duration(milliseconds: 500), alignment: Alignment.bottomCenter, child: ShopScreen())),
-
-              )
-            ),
 
 
           ],

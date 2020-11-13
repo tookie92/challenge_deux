@@ -6,14 +6,14 @@ import 'package:challenge_deux/model/user_model.dart';
 final currentUser = UserModel(
     id: 1,
     nom: "Joseph Ikinda",
-    adresse:"Koblenz",
+    adresse:"56070 Koblenz, Johannesstr. 16",
     shoes:[
       ShoeModel(
           nom: "Air one",
           prix: 200.0,
           description:
           'Lorem ipsum dolor',
-          imgPath: 'assets/images/rouge.png',
+          imgPath: 'rouge.png',
           like: true
       ),
       ShoeModel(
@@ -21,7 +21,7 @@ final currentUser = UserModel(
           prix: 200.0,
           description:
           'Lorem ipsum dolor sit amet consectetur',
-          imgPath: 'assets/images/rouge.png',
+          imgPath: 'shoees.png',
           like: true
       ),
       ShoeModel(
@@ -29,7 +29,7 @@ final currentUser = UserModel(
           prix: 200.0,
           description:
           'Lorem ipsum dolor ',
-          imgPath: 'assets/images/shoe_tilt_2.png',
+          imgPath: 'shooe_tilt_1.png',
           like: true
 
       ),
@@ -38,7 +38,7 @@ final currentUser = UserModel(
           prix: 200.0,
           description:
           'Lorem ipsum dolor',
-          imgPath: 'assets/images/rouge.png',
+          imgPath: 'revolt.png',
           like: true
 
       ),
@@ -47,7 +47,7 @@ final currentUser = UserModel(
           prix: 200.0,
           description:
           'Lorem ipsum dolor',
-          imgPath: 'assets/images/blue.png',
+          imgPath: 'blue.png',
           like: true
       ),
     ]

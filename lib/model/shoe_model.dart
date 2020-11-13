@@ -1,4 +1,3 @@
-import 'package:challenge_deux/model/categorie_model.dart';
 
 class ShoeModel{
 
